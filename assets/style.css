@@ -1,14 +1,34 @@
+@font-face {
+    font-family:acme ;
+    src: url(fonts/Acme-Regular.ttf);
+}
+
 .form-switch .form-check-input {
     height: 1.1em;
 }
 .navbar{
     margin-bottom: 50px;
+    font-family: acme;
+
 }
 .page_header{
-    margin-top: 20px;
+    background-color: bisque;
+    border-style: solid;
+    height: 65px;
+    font-family: acme;
+    font-weight: bolder;
 }
 
 .card-header span{
     /* font-size: large; */
     font-weight: bolder;
+}
+
+.card-body button{
+    margin-bottom: 10px;
+}
+
+.collapsing, .collapse img{
+    /* margin-top: 10px; */
+    margin-right: 20px;
 }

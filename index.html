@@ -10,42 +10,43 @@
     <title>Mission2 - Crypto</title>
 </head>
 <body>
-    <div class="container">
-      
-      <div class="page_header row">
-          <div class="col-sm-11"><h2>Crypto dashboard v 1.0</h2></div>
-          <div class="col-sm-1"> <img src="assets/img/logo.jpg" class="rounded-5 d-none d-sm-block" width="45" alt="logo"></div>
-          <hr>
-      </div>   
-      
-      <nav class="navbar navbar-expand-md bg-light">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Live Reports</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">About</a>
-                </li>
-              </ul>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-            </div>
+  <!-- Page Header -->
+  <div class="page_header row align-items-center">
+    <div class="col-11"><h2>Crypto dashboard v 1.0</h2></div>
+    <div class="col-1"> <img src="assets/img/logo.jpg" class="rounded-5 d-none d-sm-block" width="45" alt="logo"></div>
+  </div>  
+
+  <div class="container">
+    <!-- Page Navbar -->
+    <nav class="navbar navbar-expand-md bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Live Reports</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">About</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </div>
-      </nav>
-      
+        </div>
+    </nav>
+    
+    <!-- Page dynamic content -->
+    <div id="root">
       <div class="row">
     
-
         <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
           <div class="card border-dark mb-3" style="max-width: 18rem;">
             <!-- Card Header -->
@@ -58,137 +59,25 @@
             <!-- Card Body -->
             <div class="card-body text-dark">
               <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse">
+                More info                
+              </button>
+              <div class="collapse" id="collapse">
+                <img class="float-end" src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579" alt="">
+                <div>USD price: 5$</div>
+                <div>EUR price: 8</div>
+                <div>NIS price: 15.2</div> 
               </div>
             </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
           </div>
         </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Card Header -->
-            <div class="card-header">
-              <span>BTC</span>
-              <div class="form-check form-switch float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body text-dark">
-              <p class="card-text">Bitcoin</p>
-              <button type="button" class="btn btn-primary">More info</button>
-            </div>
-          </div>
-        </div>
-
 
       </div>
-
-        
     </div>
+      
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/index.js"></script>
 </body>
 </html>
