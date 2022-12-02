@@ -1,0 +1,14 @@
+.form-switch .form-check-input {
+    height: 1.1em;
+}
+.navbar{
+    margin-bottom: 50px;
+}
+.page_header{
+    margin-top: 20px;
+}
+
+.card-header span{
+    /* font-size: large; */
+    font-weight: bolder;
+}
