@@ -1,8 +1,11 @@
 @font-face {
     font-family:acme ;
-    src: url(fonts/Acme-Regular.ttf);
+    src: url(/assets/fonts/Acme-Regular.ttf);
 }
 
+body{
+    background-image: url(/assets/img/bg.jpg);
+}
 .form-switch .form-check-input {
     height: 1.1em;
 }
@@ -17,6 +20,7 @@
     height: 65px;
     font-family: acme;
     font-weight: bolder;
+    margin:auto;
 }
 
 .card-header span{
@@ -29,6 +33,5 @@
 }
 
 .collapsing, .collapse img{
-    /* margin-top: 10px; */
     margin-right: 20px;
 }
