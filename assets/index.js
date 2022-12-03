@@ -7,7 +7,7 @@ $("#root" ).on("click", ".collapseBtn", function() { // adds click events to eac
 }); 
 
 showHomePage();
-
+ 
 // -------------------------- home page -------------------------- //
 async function showHomePage() {
 
