@@ -1,7 +1,15 @@
-$(function() {
-
+    
+const myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard: false})
 let coinsLocaleCopy = [];
+let chartlist = [];
 $('.nav-item').click(changeAppContent);
+
+$("#root" ).on("change", "input[role='switch']", function() {
+    const selectedId = $(this).parent().parent().next().find('div').attr("id");
+    const isChecked = $(this).prop("checked");
+    handleAddToChartlist(isChecked, selectedId,this); 
+});
+
 $("#root" ).on("click", ".collapseBtn", function() { // adds click events to each .collapseBtn in root div, and toggles collapse.
   createCoinInfo( $(this).next() );
 }); 
@@ -15,20 +23,12 @@ async function showHomePage() {
 
   try{
     const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1');
-
     const data = await res.json();
-
     const homepage =  renderCoinList(data);
-
-    //Object.assign(coinsLocaleCopy, data);
     coinsLocaleCopy = Array.from(data)
-
     render('#root', homepage);
-  
   }catch(error){
-    
     render('#root', error);
-  
   }
    
 }
@@ -66,14 +66,12 @@ function createCard(coin){
 
 }
 
-async function createCoinInfo(element){
+async function createCoinInfo(element){ // THIS FUNC SHOULD BE REFACTORED  
   
   if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); }
-  
+
   const res = await fetch('https://api.coingecko.com/api/v3/coins/' + element.attr('id'));
-
   const data = await res.json();
-
   const infoElement = `
     <img class="float-end" style="width:70px" src="${data.image.small}" alt="${data.name} image">
     <div>USD price: ${data.market_data.current_price.usd} $</div>
@@ -83,10 +81,7 @@ async function createCoinInfo(element){
 
     render(element, infoElement)
     element.collapse('toggle');
-    
     element.prev().empty().text('More info');
-
-    
 }
 
 // -------------------------- util functions -------------------------- //
@@ -109,7 +104,7 @@ function changeAppContent(){
   }
 }
 
-const search = debounce(function() {
+const search = debounce(function() { // THIS SHOULD BE FIXED WITH ARR METHOD FOR FILTER !!! 
   const filteredArr = [];
   const searchValue = $('#search').val().toLowerCase(); // search input
   
@@ -129,4 +124,29 @@ const search = debounce(function() {
 }, 500);
 $('#search').on('keyup focusout change', search);
 
-});
+
+
+
+function handleAddToChartlist(isChecked, selectedId, togglerSwitch){
+    
+    const coinIndexInLocale = coinsLocaleCopy.findIndex((coin)=>{return coin.id == selectedId})
+    
+    if(isChecked && chartlist.length<2){    
+        chartlist.push(coinsLocaleCopy[coinIndexInLocale]);
+    } 
+        
+    else if(isChecked && chartlist.length >= 2){ 
+        //render choise modal
+        $(togglerSwitch).prop("checked",false);
+        const modalContent =  renderCoinList(chartlist);
+        render('#modalContent', modalContent);
+        myModal.show();
+    } 
+    
+    else {
+        const indexToRemove = chartlist.findIndex((coin)=>{return coin.id == selectedId});
+        chartlist.splice(indexToRemove, 1);
+    }
+
+    console.log(chartlist);
+}
