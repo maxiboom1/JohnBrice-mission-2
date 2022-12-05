@@ -46,7 +46,7 @@ const debounce = (func, wait) => {
 
 const _SEARCHFAIL = `<main class="container">
 <div class="bg-light p-5 rounded">
-  <h1>No Luck taday :(</h1>
+  <h1>No Luck today :(</h1>
   <p class="lead">Try harder next time - no one gets ride for free.</p>
 </div>
 </main>`
