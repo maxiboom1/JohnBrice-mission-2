@@ -4,6 +4,7 @@
 }
 
 body{
+    font-family: acme;
     background-image: url(/assets/img/bg.jpg);
 }
 .form-switch .form-check-input {
@@ -32,6 +33,7 @@ body{
     margin-bottom: 10px;
 }
 
-.collapsing, .collapse img{
+div[class="card-body text-dark"] img{
     margin-right: 20px;
-}
+    margin-top: 10px;
+} 

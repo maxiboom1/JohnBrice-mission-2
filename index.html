@@ -54,18 +54,20 @@
   </div>
 
   <div class="modal" id="modal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl modal-fullscreen-sm-down">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">YoU have reached the limit of 5 currencies in chart graph - please deselect the following to include your last choise:</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div id="modalContent"></div>
+          <div id="modalContent" class="container">
+
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" onclick="updateOnModalSave(this)">Save changes</button>
         </div>
       </div>
     </div>
