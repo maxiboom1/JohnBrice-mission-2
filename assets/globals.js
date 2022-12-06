@@ -50,3 +50,50 @@ const _SEARCHFAIL = `<main class="container">
   <p class="lead">Try harder next time - no one gets ride for free.</p>
 </div>
 </main>`
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-xl-3">
+<div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
+  <div class="card-header">
+    <span>${coin.symbol.toUpperCase()}</span>
+    <div class="form-check form-switch float-end">
+      <input class="form-check-input" coin-symbol="${coin.symbol}" coin-id="${coin.id}" type="checkbox" role="switch">
+    </div>
+  </div>
+  <div class="card-body text-dark">
+    <img class="float-end" style="width:70px" src="${coin.image}" alt="image">
+    <p class="card-text">${coin.name}</p>
+    <button class="btn btn-primary collapseBtn">More info</button>
+    <div class="collapse" id="${coin.id}">
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+ <div class="col-xs-6 col-sm-6 col-md-4 col-xl-3">
+    <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
+      <div class="card-body">
+        <img class="float-end" style="width:50px" src="${coin.thumbnail}" alt="image">
+        <span>${coin.symbol.toUpperCase()}</span>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" coin-symbol="${coin.symbol}_" coin-id="${coin.id}_" role="switch" checked>
+        </div>
+      </div>
+    </div>
+  </div>
+*/
