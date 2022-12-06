@@ -1,4 +1,4 @@
-const myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard: false})
+const myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard: false, backdrop: 'static'});
 let coinsLocaleCopy = [];
 let chartlist = [];
 $('.nav-item').click(changeAppContent);
@@ -88,6 +88,7 @@ function changeAppContent(){
     showHomePage();
   } else if(page =="Live Reports"){
     console.log('Go to live');
+    renderChart();
   } else {
     console.log('Go to about me');
   }
