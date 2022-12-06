@@ -13,15 +13,19 @@
 </head>
 <body>
 
-  <!-- Page Header -->
-  <div class="page_header row align-items-center">
-    <div class="col-11"><h2>Crypto dashboard v 1.0</h2></div>
-    <div class="col-1"> <img src="assets/img/logo.jpg" class="rounded-5 d-none d-sm-block" width="45" alt="logo"></div>
-  </div>  
+<!-- As a heading -->
+<nav class="navbar" id="header">
+  <div class="container-fluid">
+    <span class="navbar-brand">Crypto dashboard v 1.0</span>
+    <a class="navbar-brand float-end " href="#">
+      <img src="assets/img/logo1.bmp" alt="Logo" width="50" height="50" id="logo">
+    </a>
+  </div>
+</nav>
 
   <div class="container">
     <!-- Page Navbar -->
-    <nav class="navbar navbar-expand-md bg-light">
+    <nav class="navbar sticky-top navbar-expand-sm" id="navbar">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
@@ -38,7 +42,7 @@
                 <a class="nav-link">About</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-sm-block" role="search">
               <input class="form-control me-2" id="search" type="search" placeholder="Search">
               <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
             </form>

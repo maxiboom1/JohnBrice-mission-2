@@ -7,12 +7,30 @@ body{
     font-family: acme;
     background-image: url(/assets/img/bg.jpg);
 }
+#logo{
+    border-radius: 50px;
+}
+#header{
+    background-color: rgba(154, 65, 166, 0.823);
+}
+
+#header span{
+font-size: 35px;
+color:aliceblue;
+margin-left: 20px;
+}
+
 .form-switch .form-check-input {
     height: 1.1em;
 }
-.navbar{
+#navbar{
     margin-bottom: 50px;
     font-family: acme;
+    background-color: blueviolet;
+}
+
+.nav-link{
+    color:aliceblue;
 
 }
 .page_header{

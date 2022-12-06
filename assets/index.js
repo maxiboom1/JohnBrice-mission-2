@@ -110,9 +110,9 @@ const search = debounce(function() {
   let searchResult = renderCoinList(filteredArr,createCard);
   if(filteredArr.length == 0){searchResult = _SEARCHFAIL;} // If no search result - print msg
   render('#root', searchResult);
+  renderChartlistOnDOM();
 }, 500);
 $('#search').on('keyup focusout change', search);
-
 
 // 5-selector logics
 
@@ -177,7 +177,6 @@ function updateOnModalSave(el){
     const id = $(item).attr('coin-id').slice(0,-1);
     $(`input[coin-id="${id}"]`).prop("checked",false);
   }
-
   for(const item of itemsToInclude){ // Create 
     const id = $(item).attr('coin-id').slice(0,-1);   
     chartlist.push({
@@ -197,4 +196,10 @@ function updateOnModalSave(el){
 
   myModal.hide();
 
+}
+
+function renderChartlistOnDOM(){
+  for(const item of chartlist){ 
+    $(`input[coin-id="${item.id}"]`).prop("checked",true);
+  }
 }
