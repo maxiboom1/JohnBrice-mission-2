@@ -42,7 +42,7 @@ function createCard(coin){
             <div class="card-header">
               <span>${coin.symbol.toUpperCase()}</span>
               <div class="form-check form-switch float-end">
-                <input class="form-check-input" coin-symbol="${coin.symbol}" type="checkbox" role="switch">
+                <input class="form-check-input" coin-symbol="${coin.symbol}" coin-id="${coin.id}" type="checkbox" role="switch">
               </div>
             </div>
             <div class="card-body text-dark">
