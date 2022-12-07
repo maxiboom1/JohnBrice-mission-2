@@ -204,3 +204,5 @@ function renderChartlistOnDOM(){
     $(`input[coin-id="${item.id}"]`).prop("checked",true);
   }
 }
+
+//https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD&api_key={1bfdcb4109dec4ea5eff5e81cf02f425d5e12ba454dbc809b8a5ba38250a46f2}
