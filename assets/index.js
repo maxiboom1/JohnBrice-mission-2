@@ -144,8 +144,6 @@ function handleAddToChartlist(toggler){
     const indexToRemove = chartlist.findIndex((coin)=>{return coin.id == selectedId});
     chartlist.splice(indexToRemove, 1);
   }
-
-  console.log(chartlist);
 }
 
 function createModalCard(coin){
@@ -166,13 +164,12 @@ function createModalCard(coin){
   return modalCard;
 
 }
-// on user 'save' in modal dialog
+// on user 'save' in modal dialog =>
 function updateOnModalSave(el){ 
   
-  const itemsToInclude = $(el).parent().prev().find('input:checked');
-  const itemsToExclude = $(el).parent().prev().find('input:not(:checked)');
+  const itemsToInclude = $(el).parent().prev().find('input:checked'); //list of togglers
+  const itemsToExclude = $(el).parent().prev().find('input:not(:checked)'); //list of togglers
   chartlist.length = 0; //reset chart list
-
   // clear excluded togglers from DOM
   for(const item of itemsToExclude){
     const id = $(item).attr('coin-id').slice(0,-1);
@@ -183,7 +180,7 @@ function updateOnModalSave(el){
     chartlist.push({
       id:id, 
       symbol:$(item).attr('coin-symbol').slice(0,-1), 
-      thumbnail:$(el).parent().first().attr('src')
+      thumbnail:$(item).parent().parent().find('img').attr('src')
     });
     $(`input[coin-id="${id}"]`).prop("checked",true);
   }
