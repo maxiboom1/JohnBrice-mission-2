@@ -69,8 +69,7 @@ async function createCoinInfo(element){  // el = <div class="collapse" id="${coi
     <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
     <div>NIS price: ${data.market_data.current_price.ils} &#8362;</div> 
     `;
-
-    render(element, infoElement)
+    render(element, infoElement);
     element.collapse('toggle');
     element.prev().empty().text('More info');
 }
@@ -79,19 +78,6 @@ function render(container, element){
   
   $(container).html('').append(element);
 
-}
-
-function changeAppContent(){
-  const page = $(this)[0].outerText;
-  if(page == "Home"){
-    console.log('Go home');
-    showHomePage();
-  } else if(page =="Live Reports"){
-    console.log('Go to live');
-    renderChart();
-  } else {
-    console.log('Go to about me');
-  }
 }
 
 const search = debounce(function() { 
@@ -169,7 +155,7 @@ function updateOnModalSave(el){
   
   const itemsToInclude = $(el).parent().prev().find('input:checked'); //list of togglers
   const itemsToExclude = $(el).parent().prev().find('input:not(:checked)'); //list of togglers
-  chartlist.length = 0; //reset chart list
+  resetChartlist(); //reset chart list
   // clear excluded togglers from DOM
   for(const item of itemsToExclude){
     const id = $(item).attr('coin-id').slice(0,-1);
@@ -202,4 +188,29 @@ function renderChartlistOnDOM(){
   }
 }
 
-//https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD&api_key={1bfdcb4109dec4ea5eff5e81cf02f425d5e12ba454dbc809b8a5ba38250a46f2}
+function resetChartlist(){
+  chartlist.length = 0;
+}
+
+function changeAppContent(){
+  const page = $(this)[0].outerText;
+  
+  if(page == "Home"){
+    console.log('Go home');
+    showHomePage();
+    resetChartlist();
+    clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop 
+  } 
+    
+    else if(page =="Live Reports"){
+    if(chartlist.length){
+      buildChartData();
+    } else {
+      console.log('no currencies was selected');
+    }
+
+  
+  } else {
+    console.log('Go to about me');
+  }
+}
