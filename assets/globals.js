@@ -33,6 +33,36 @@ const _COMING_SOON = `<main class="container">
 <iframe src="reference/27874 - Project Jquery AJAX - Crypto API.pdf" width="100%" height="830px">
 </main>`
 
+
+const _ABOUT = `
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        
+<div class="card p-4">
+
+    <div class="image d-flex flex-column justify-content-center align-items-center">
+
+        <button class="btn btn-secondary"> <img src="assets/img/profile.png" height="100" width="100" /></button>
+        <span class="name mt-3">Alex Samih-zade</span> <span class="idd">@Maxiboom1</span>
+        
+        <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+            <span class="number">5 <span class="follow">Happy JS years</span></span> </div>
+        <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Show me more</button> </div>
+        <div class="text mt-3">
+            <span>Alex is a Full Stack Web Developer with an emphasis on complex, challenging JS coding.<br><br>
+            </span>
+        </div>
+        
+        <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+            <span><i class="fa fa-github"></i></span> 
+            <span><i class="fa fa-facebook-f"></i></span>
+        </div>            
+    </div>
+</div>
+</div> `;
+
+
+
+
 // ========================================= DEBOUNCER ========================================= \\
 
 // Originally inspired by  David Walsh (https://davidwalsh.name/javascript-debounce-function)
