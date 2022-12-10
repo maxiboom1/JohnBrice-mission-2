@@ -1,6 +1,5 @@
 async function buildChartData(){
-	//const data = {"BTC": {"USD": 17177.02},"ETH": {"USD": 12276.03},"USDT": {"USD": 15000}};
-	const url = getFetchURL();
+ 	const url = getFetchURL();
 	const data = await fetchData(url);
 	const datapoints = createCanvasData(data);
 	renderChart(datapoints,url);
@@ -40,21 +39,15 @@ function createCanvasData(data){
 	
 }
 
-async function fetchData(url){
-	const res = await fetch(url);
-	const data = await res.json();
-	return data;
-}
-
 function renderChart(datapoints,url){
-	
+
 	const chart = new CanvasJS.Chart("root", {
 		zoomEnabled: true,
 		title: {
-			text: "Share Value of Two Companies"
+			text: "USD Value of selected currencies"
 		},
 		axisX: {
-			title: "chart updates every 3 secs"
+			title: "Chart updates every 2 secs"
 		},
 		axisY:{
 			prefix: "$"
@@ -82,20 +75,18 @@ function renderChart(datapoints,url){
 		chart.render();
 	}
 	
-	chart.render();
-	const interval = setInterval(addData,5000);
-	localStorage.setItem('interval', interval);
-	
 	async function addData(){
 		const newTime = Date.now();
 		const newData = await fetchData(url);
 		let i =0;
 		for (const property in newData) {
-			console.log(newData[property].USD)
 			chart.options.data[i].dataPoints.push({y:newData[property].USD, x: newTime});
 			i++;
 		}
 		chart.render();
 	}
-
+	
+	chart.render();
+	const interval = setInterval(addData,2000);
+	localStorage.setItem('interval', interval);
 }

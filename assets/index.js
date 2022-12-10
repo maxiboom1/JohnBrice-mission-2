@@ -1,4 +1,6 @@
 const myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard: false, backdrop: 'static'});
+const toast = new bootstrap.Toast(document.getElementById('liveToast'));
+
 let coinsLocaleCopy = [];
 let chartlist = [];
 $('.nav-item').click(changeAppContent);
@@ -14,8 +16,7 @@ async function showHomePage() {
   $('#root').html('').append(_SPINNER); // insert spinner
 
   try{
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1');
-    const data = await res.json();
+    const data = await fetchData('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1');
     const homepage =  renderCoinList(data, createCard);
     coinsLocaleCopy = Array.from(data);
     render('#root', homepage);
@@ -60,10 +61,8 @@ function createCard(coin){
 
 async function createCoinInfo(element){  // el = <div class="collapse" id="${coin.id}">
   
-  if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); } // add spinner to btn
-
-  const res = await fetch('https://api.coingecko.com/api/v3/coins/' + element.attr('id'));
-  const data = await res.json();
+  if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); } // add spinner to btn, only if its closed
+  const data = await fetchData('https://api.coingecko.com/api/v3/coins/' + element.attr('id'))
   const infoElement = `
     <div>USD price: ${data.market_data.current_price.usd} $</div>
     <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
@@ -192,25 +191,46 @@ function resetChartlist(){
   chartlist.length = 0;
 }
 
+async function fetchData(url){
+	const res = await fetch(url);
+	const data = await res.json();
+	return data;
+}
+
+function disableSearch(action = "disable"){
+  if (action == 'enable'){
+    $('#search').removeAttr("disabled"); 
+  } else {
+    $('#search').attr('disabled', 'disabled');
+  }
+}
+
 function changeAppContent(){
+  
   const page = $(this)[0].outerText;
   
   if(page == "Home"){
-    console.log('Go home');
     showHomePage();
     resetChartlist();
-    clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop 
-  } 
+    clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop
+    disableSearch('enable');
+    } 
     
     else if(page =="Live Reports"){
     if(chartlist.length){
+      $('#root').html('').append(_SPINNER); // insert spinner
       buildChartData();
+      disableSearch();
+      
     } else {
-      console.log('no currencies was selected');
+      //noticeModal.show();
+      toast.show()
     }
 
   
   } else {
     console.log('Go to about me');
+    render('#root', _COMING_SOON);
+    disableSearch();
   }
 }
