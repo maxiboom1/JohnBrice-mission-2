@@ -214,6 +214,7 @@ function changeAppContent(){
     resetChartlist();
     clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop
     disableSearch('enable');
+    closeMenu();
     } 
     
     else if(page =="Live Reports"){
@@ -221,10 +222,12 @@ function changeAppContent(){
       $('#root').html('').append(_SPINNER); // insert spinner
       buildChartData();
       disableSearch();
-      
+      closeMenu();
+
     } else {
       //noticeModal.show();
-      toast.show()
+      toast.show();
+      closeMenu();
     }
 
   
@@ -233,5 +236,11 @@ function changeAppContent(){
     //render('#root', _COMING_SOON);
     render('#root',_ABOUT)
     disableSearch();
+    closeMenu();
+
   }
+}
+
+function closeMenu(){
+  setTimeout(()=>{$('.navbar-toggler').click();},250);
 }
