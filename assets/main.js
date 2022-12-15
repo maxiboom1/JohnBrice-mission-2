@@ -67,7 +67,7 @@ async function createCoinInfo(element){  // el = <div class="collapse" id="${coi
   
   if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); } // add spinner to btn, only if its closed
   const data = await fetchData('https://api.coingecko.com/api/v3/coins/' + element.attr('id'));
-  cacheDB.add('https://api.coingecko.com/api/v3/coins/' + element.attr('id')); // test
+  //cacheDB.add('https://api.coingecko.com/api/v3/coins/' + element.attr('id')); // test
   const infoElement = `
     <div>USD price: ${data.market_data.current_price.usd} $</div>
     <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
