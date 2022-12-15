@@ -225,7 +225,6 @@ function changeAppContent(){
       closeMenu();
 
     } else {
-      //noticeModal.show();
       toast.show();
       closeMenu();
     }
@@ -233,14 +232,17 @@ function changeAppContent(){
   
   } else {
     console.log('Go to about me');
-    //render('#root', _COMING_SOON);
+    clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop
     render('#root',_ABOUT)
     disableSearch();
     closeMenu();
-
   }
 }
 
 function closeMenu(){
-  setTimeout(()=>{$('.navbar-toggler').click();},250);
+  
+  if(window.innerWidth <576){
+    setTimeout(()=>{$('.navbar-toggler').click();},250);
+  }
+  
 }

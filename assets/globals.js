@@ -8,7 +8,6 @@ const _SPINNER = `
 const _SPINNER_BTN = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 <span class="visually-hidden">Loading...</span>`;
 
-
 const _SEARCHFAIL = `<main class="container">
 <div class="bg-light p-5 rounded">
   <h1>No Luck today :(</h1>
@@ -33,7 +32,6 @@ const _COMING_SOON = `<main class="container">
 <iframe src="reference/27874 - Project Jquery AJAX - Crypto API.pdf" width="100%" height="830px">
 </main>`
 
-
 const _ABOUT = `
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         
@@ -46,7 +44,9 @@ const _ABOUT = `
         
         <div class="d-flex flex-row justify-content-center align-items-center mt-3">
             <span class="number">5 <span class="follow">Happy JS years</span></span> </div>
-        <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Show me more</button> </div>
+        <div class=" d-flex mt-2"> 
+        <button class="btn1 btn-dark" onclick="test()">Show me more</button> 
+        </div>
         <div class="text mt-3">
             <span>Alex is a Full Stack Web Developer with an emphasis on complex, challenging JS coding.<br><br>
             </span>
@@ -59,9 +59,6 @@ const _ABOUT = `
     </div>
 </div>
 </div> `;
-
-
-
 
 // ========================================= DEBOUNCER ========================================= \\
 
@@ -83,3 +80,6 @@ const debounce = (func, wait) => {
   };
 };
 
+function test(){
+    fetch('localhost');
+}
