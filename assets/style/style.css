@@ -1,11 +1,11 @@
 @font-face {
     font-family:acme ;
-    src: url(/assets/fonts/Acme-Regular.ttf);
+    src: url(fonts/Acme-Regular.ttf);
 }
 
 body{
     font-family: acme;
-    background-image: url(/assets/img/bg.jpg);
+    background-image: url(../img/bg.jpg);
 }
 
 #header{
