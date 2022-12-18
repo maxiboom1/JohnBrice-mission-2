@@ -18,7 +18,6 @@ const debounce = (func, wait) => {
   };
 };
 
-
 const search = debounce(function() { 
   const filteredArr = [];
   const searchValue = $('#search').val().toLowerCase(); // search input

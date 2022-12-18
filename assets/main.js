@@ -1,7 +1,8 @@
 const myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard: false, backdrop: 'static'});
 const toast = new bootstrap.Toast(document.getElementById('liveToast'));
 let coinsLocaleCopy = []; // 100 items copy 
-let chartlist = [];
+let chartlist = []; // will contain objs: {id:id, symbol:symbol, thumbnail:thumbnail}
+let cache = [];
 
 
 $('#search').on('keyup focusout change', search);
@@ -64,10 +65,10 @@ function createCard(coin){
 }
 
 async function createCoinInfo(element){  // el = <div class="collapse" id="${coin.id}">
-  
+  const id =  element.attr('id');
   if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); } // add spinner to btn, only if its closed
-  const data = await fetchData('https://api.coingecko.com/api/v3/coins/' + element.attr('id'));
-  //cacheDB.add('https://api.coingecko.com/api/v3/coins/' + element.attr('id')); // test
+  const data = isCachedAndValid(id) ? getFromCache(id) : await fetchData('https://api.coingecko.com/api/v3/coins/' + id);
+  //const data = await fetchData('https://api.coingecko.com/api/v3/coins/' + id);
   const infoElement = `
     <div>USD price: ${data.market_data.current_price.usd} $</div>
     <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
@@ -82,43 +83,6 @@ function render(container, element){
   
   $(container).html('').append(element);
 
-}
-
-// 5-selector logics
-
-function handleAddToChartlist(toggler){ 
-  const selectedId = toggler.attr("coin-id");
-  const isChecked = toggler.prop("checked");
-  const thumbnail = coinsLocaleCopy.find((coin)=>{return coin.id == selectedId}).image;
-  const symbol = toggler.attr("coin-symbol");
-  
-  if(isChecked && chartlist.length<5){    
-    chartlist.push({id:selectedId, symbol:symbol, thumbnail:thumbnail});
-  } 
-  
-  else if(isChecked && chartlist.length >=5){ 
-    $(toggler).prop("checked",false);
-    localStorage.setItem('tempId', JSON.stringify({id:selectedId, symbol:symbol, thumbnail:thumbnail}));//set queue item
-    const modalContent =  renderCoinList(chartlist,createModalCard);
-    render('#modalContent', modalContent);
-    myModal.show();
-
-  } 
-  
-  else { // Remove unchecked element from chartlist
-    const indexToRemove = chartlist.findIndex((coin)=>{return coin.id == selectedId});
-    chartlist.splice(indexToRemove, 1);
-  }
-}
-
-function renderChartlistOnDOM(){
-  for(const item of chartlist){ 
-    $(`input[coin-id="${item.id}"]`).prop("checked",true);
-  }
-}
-
-function resetChartlist(){
-  chartlist.length = 0;
 }
 
 async function fetchData(url){
