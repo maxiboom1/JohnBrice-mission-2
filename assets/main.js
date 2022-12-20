@@ -67,8 +67,7 @@ function createCard(coin){
 async function createCoinInfo(element){  // el = <div class="collapse" id="${coin.id}">
   const id =  element.attr('id');
   if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); } // add spinner to btn, only if its closed
-  const data = isCachedAndValid(id) ? getFromCache(id) : await fetchData('https://api.coingecko.com/api/v3/coins/' + id);
-  //const data = await fetchData('https://api.coingecko.com/api/v3/coins/' + id);
+  const data = await checkCacheAndGetData(id);
   const infoElement = `
     <div>USD price: ${data.market_data.current_price.usd} $</div>
     <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
@@ -76,7 +75,7 @@ async function createCoinInfo(element){  // el = <div class="collapse" id="${coi
     `;
     render(element, infoElement);
     element.collapse('toggle');
-    element.prev().empty().text('More info');
+    element.prev().text('More info');
 }
 
 function render(container, element){
