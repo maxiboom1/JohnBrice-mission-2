@@ -18,13 +18,13 @@ function createCanvasData(data){
            type:'line',
            xValueType: "dateTime", 
            yValueFormatString: "$####.00", 
-           xValueFormatString: "hh:mm:ss TT", 
+           xValueFormatString: "hh:mm:ss", 
            showInLegend: true,
            name: property,
            dataPoints: datapoint
        };
        
-       arr.push(item)
+       arr.push(item);
    }
    
    return arr;
