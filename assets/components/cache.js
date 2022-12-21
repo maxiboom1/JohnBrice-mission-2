@@ -1,23 +1,35 @@
-function getFromCache(id){
-  console.log('getFromCache');
-  console.log(cache[id]);
+const cache = [];
 
+function getFromCache(id){
+  print('get from cache');
+  return cache[id];
 }
 
 function isCachedAndValid(id){
-  return false;
+  
+  const now = new Date();
+  const cachedId = cache[id];
+   
+  try { // I use try-catch here to handle cache[id] == undefined, 
+  
+  if((now - cachedId.timestamp) < 15000){return true;} else {return false;} 
+                                                                           
+  } catch (e) {
+    
+    return false; // cache id is undefined (not created yet).
+  
+  }
+
 }
 
 function updateCache(id, data){
-  console.log('update cache');
+  print('New fetch and update cache');
   cache[id] = data;
   cache[id].timestamp = new Date; 
-  console.log(cache);
-
 }
 
+// Main func that triggered from openCoinInfo func.
 async function checkCacheAndGetData(id){
-
   if(isCachedAndValid(id)){
     return getFromCache(id);
   } else {
@@ -25,5 +37,4 @@ async function checkCacheAndGetData(id){
     updateCache(id, data);
     return data;
   }
-
 }

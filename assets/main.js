@@ -2,8 +2,6 @@ const myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard:
 const toast = new bootstrap.Toast(document.getElementById('liveToast'));
 let coinsLocaleCopy = []; // 100 items copy 
 let chartlist = []; // will contain objs: {id:id, symbol:symbol, thumbnail:thumbnail}
-let cache = [];
-
 
 $('#search').on('keyup focusout change', search);
 $('.nav-item').click(changeAppContent);
@@ -11,7 +9,7 @@ $("#root" ).on("change", "input[role='switch']", function() {
   handleAddToChartlist($(this)); 
 });
 $("#root" ).on("click", ".collapseBtn", function() { // adds click events to each .collapseBtn in root div, and toggles collapse.
-  createCoinInfo( $(this).next() );
+  openMoreInfo( $(this).next() );
 }); 
 
 showHomePage();
@@ -64,18 +62,23 @@ function createCard(coin){
 
 }
 
-async function createCoinInfo(element){  // el = <div class="collapse" id="${coin.id}">
+async function openMoreInfo(element){  // el = <div class="collapse" id="${coin.id}">
   const id =  element.attr('id');
-  if(!element.hasClass("show")){ element.prev().append(_SPINNER_BTN); } // add spinner to btn, only if its closed
-  const data = await checkCacheAndGetData(id);
-  const infoElement = `
-    <div>USD price: ${data.market_data.current_price.usd} $</div>
-    <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
-    <div>NIS price: ${data.market_data.current_price.ils} &#8362;</div> 
-    `;
+  if(!element.hasClass("show")){ // handle if the element is collapsed
+    element.prev().append(_SPINNER_BTN); 
+    const data = await checkCacheAndGetData(id);
+    const infoElement = createMoreInfoElement(data);
     render(element, infoElement);
-    element.collapse('toggle');
-    element.prev().text('More info');
+  } 
+  element.collapse('toggle');
+  element.prev().text('More info');
+}
+
+function createMoreInfoElement(data){
+return   `<div>USD price: ${data.market_data.current_price.usd} $</div>
+          <div>EUR price: ${data.market_data.current_price.eur} &#8364;</div>
+          <div>NIS price: ${data.market_data.current_price.ils} &#8362;</div> 
+          `;
 }
 
 function render(container, element){
@@ -117,7 +120,7 @@ function changeAppContent(){
   
   } else {
     console.log('Go to about me');
-    clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop
+    clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch interval
     render('#root',_ABOUT)
     disableSearch();
     closeMenu();
@@ -130,4 +133,8 @@ function closeMenu(){
     setTimeout(()=>{$('.navbar-toggler').click();},250);
   }
   
+}
+
+function print(value){
+  console.log(value);
 }

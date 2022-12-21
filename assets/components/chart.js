@@ -1,14 +1,7 @@
-async function buildChartData(){
-    const url = getFetchURL();
-    const data = await fetchData(url);
-    const datapoints = createCanvasData(data);
-    renderChart(datapoints,url);
-}
-
 function getFetchURL(){
    let requestedCurrencies = '';
    for(const coin of chartlist){
-       requestedCurrencies += coin.symbol.toUpperCase() + ',';
+       requestedCurrencies += coin.symbol.toUpperCase() + ','; // will generate 'ETH,BTC,OSC,', then we slice the last ','
    }
    return `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${requestedCurrencies.slice(0,-1)}&tsyms=USD&api_key={1bfdcb4109dec4ea5eff5e81cf02f425d5e12ba454dbc809b8a5ba38250a46f2}`;
 }
@@ -88,4 +81,11 @@ function renderChart(datapoints,url){
    chart.render();
    const interval = setInterval(addData,2000);
    localStorage.setItem('interval', interval);
+}
+
+async function buildChartData(){ 
+    const url = getFetchURL();
+    const data = await fetchData(url);
+    const datapoints = createCanvasData(data);
+    renderChart(datapoints,url);
 }
