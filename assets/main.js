@@ -94,10 +94,10 @@ async function fetchData(url){
 }
 
 function changeAppContent(){
-  
-  const page = $(this)[0].outerText;
-  
-  if(page == "Home"){
+ 
+  const page = $(this).children().attr('value');
+
+  if(page == "home"){
     showHomePage();
     resetChartlist();
     clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch loop
@@ -105,12 +105,14 @@ function changeAppContent(){
     closeMenu();
     } 
     
-    else if(page =="Live Reports"){
+    else if(page =="reports"){
     if(chartlist.length){
+      clearInterval(localStorage.getItem('interval')); // cancel prev canvasJS fetch loop, prevents user many clicks on 'live reports' attack 
       $('#root').html('').append(_SPINNER); // insert spinner
       buildChartData();
       disableSearch();
       closeMenu();
+
 
     } else {
       toast.show();
@@ -119,12 +121,14 @@ function changeAppContent(){
 
   
   } else {
-    console.log('Go to about me');
+    console.log('about');
     clearInterval(localStorage.getItem('interval')); // cancel canvasJS fetch interval
     render('#root',_ABOUT)
     disableSearch();
     closeMenu();
+  
   }
+
 }
 
 function closeMenu(){
