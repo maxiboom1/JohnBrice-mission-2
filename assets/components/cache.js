@@ -1,10 +1,5 @@
 const cache = [];
 
-function getFromCache(id){
-  print('get from cache');
-  return cache[id];
-}
-
 function isCachedAndValid(id){
   
   const now = new Date();
@@ -31,7 +26,7 @@ function updateCache(id, data){
 // Main func that triggered from openCoinInfo func.
 async function checkCacheAndGetData(id){
   if(isCachedAndValid(id)){
-    return getFromCache(id);
+    return cache[id];
   } else {
     const data = await fetchData('https://api.coingecko.com/api/v3/coins/' + id);
     updateCache(id, data);

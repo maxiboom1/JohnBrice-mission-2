@@ -87,7 +87,7 @@ function renderChart(datapoints,url){
 //main
 async function buildChartData(){ 
     const url = getFetchURL();
-    const data = await fetchData(url); //{"BTC":{"USD":16855.08}}
-    const datapoints = createCanvasData(data,true);
+    const data = await fetchData(url); // response example: {"BTC":{"USD":16855.08},"ETH":{"USD":1635.12}}
+    const datapoints = createCanvasData(data);
     renderChart(datapoints,url);
 }
