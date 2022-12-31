@@ -26,10 +26,11 @@ const _ABOUT = `
         <span class="name mt-3">Alex Samih-zade</span><br>
         <span class="idd">@Maxiboom1</span>
         <div class="d-flex flex-row justify-content-center align-items-center mt-3">
-            <span class="number">5 <span class="follow">Happy JS coding years</span></span> </div>
+            <span class="number">5 <span class="follow">Happy JS coding years!</span></span> </div>
         <div class=" d-flex mt-2"> 
         <div class="text mt-3">
             <span>Alex is a Full Stack Web Developer with an emphasis on complex, challenging JS coding.<br><br>
+            <span>GitHub project can be found <a href="https://github.com/maxiboom1/JohnBrice-mission-2">here</a>, and <a href="https://maxiboom1.github.io/JohnBrice-mission-2/">here</a> you can see this project on GitHub pages.<br>
             </span>
         </div>        
     </div>
